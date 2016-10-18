@@ -1,0 +1,71 @@
+#ICDcontainer {
+	width:1028px; 
+	margin: 0 auto; 
+	position: relative;
+	top: 32px;
+}
+
+#pageHeader {
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width:1030px;
+	height: 64px;
+	background-color: red;
+	//border: 1px solid black;
+	text-align: center;
+	vertical-align: middle;
+	color: #ffffff;
+	font-size: 32px;
+}
+
+.vertical-align {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+html {
+	background-color: #333333;
+}
+
+#mapContainer {
+	display: block;
+	position: absolute;
+	top: 64px;
+	left: 0px;
+	height: 800px;
+	width: 616px;
+	min-width: 512px;
+	border: 1px solid #dedede;
+	background-color: #fefefe;
+	text-align: center;
+}
+
+#streamContainer {
+	display: block;
+	position: absolute;
+	top: 64px;
+	left: 616px;
+	overflow-y: scroll;
+	overflow-x: visible;
+	height: 800px;
+	width: 412px;
+	min-width: 342px;
+	border: 1px solid #dedede;
+	background-color: #fefefe;	
+	text-align: center;
+}
+
+.streamObj {
+	margin: auto;
+	background-color: green;
+	width: 320px;
+	height: 240px;
+}
+
+
+

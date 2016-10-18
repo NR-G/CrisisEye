@@ -1,0 +1,47 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="ICDstyle.css">
+</head>
+<body>
+
+<div id="ICDcontainer">
+<div id="pageHeader">
+	<div class="vertical-align"> Crysis Eye - Incident Commander Display<sup style="font-size:10px;"> TM</sup> </div>
+</div>
+
+<div id="mapContainer">
+	<img id="map" class="vertical-align" style="margin: auto;" src="" />
+</div>
+
+<div id="streamContainer">
+
+</div>
+</div>
+
+<script class="vertical-align" src="streamHandling.js"></script>
+
+<script type="text/javascript">
+
+	// initial testing packet (for testing only)
+	var tmpCnc =
+	'[' +
+		'{' +
+			'"sourceIP" : "192.168.1.dontcare",' +
+			'"serverIP" : "localhost",' +
+			'"path" : "12345/test.ogg",' +
+			'"latitude" : "30.22134299999999",' +
+			'"longitude" : "-92.04442999999998",' +
+			'"viewDir" : "5.49778714378"' +
+		'}' +
+	']';
+	
+	var latOff = 0;
+		
+	//BuildStream(tmpCnc);
+		
+	document.getElementById("map").setAttribute("src",GetMap());
+
+</script>
+
+</body>
+</html>

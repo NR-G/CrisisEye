@@ -1,0 +1,31 @@
+Instructions for Launching VLC to intake
+	video streams, translate them into OGG
+	and then supply a video-feed for the ICD.
+
+
+1) Open VLC using the shortcut icon
+	(Not the SDP Files!)
+
+2) Look at the top left of the screen
+	-Select Media
+	-Select Stream...
+	-Select Add...
+
+3) Select the associated SDP file that requires hosting
+	then select the Stream button.
+	Select Next
+
+4) Select the drop-down
+	Select Http
+	Select Add
+	Type in the Path field: "/test"
+	Select Next
+
+5) Select the drop-down
+	and then select: Video - Theora + Vorbis (OGG)
+	Select Next
+
+6) Select Stream
+
+NOTE: Repeat this process for every-single stream
+NOTE: stream_00.sdp is for test ports 5006 & 5007
