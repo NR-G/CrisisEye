@@ -1,0 +1,219 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script language="javascript" type="text/javascript">
+
+    var map;
+    var geocoder;
+    var lati;
+    var lon;
+    function InitializeMap() {
+
+        var latlng = new google.maps.LatLng(lati, lon);
+        var myOptions =
+        {
+            zoom: 8,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true
+        };
+        map = new google.maps.Map(document.getElementById("map"), myOptions);
+    }
+
+    function FindLocaiton(lati,lon) {
+        geocoder = new google.maps.Geocoder();
+        InitializeMap();
+
+        var address = document.getElementById("addressinput").value;
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+
+            }
+            else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+
+    }
+
+function initialize() {
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+            center: new google.maps.LatLng(12.9583182, 77.6398512),
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        var myLatlng = new google.maps.LatLng("12.9583182", "77.6398512");
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: "Bangalore" 
+        });
+
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+    function Button1_onclick() {
+      
+        FindLocaiton(lati,lon);
+    }
+    
+google.maps.event.addDomListener(window, 'load', initialize);
+   
+
+</script>
+
+<div class="center jumbotron">
+  <h1>Welcome to the CrisisEye App</h1>
+
+  <h2>
+ <table  class= "table table-bordered">
+   
+    
+    <tr>
+        <td>
+            <table clss= "table">
+                <tr>
+                    <th >list of videos:</th>
+                   
+        
+                </tr>
+                <tr>
+                    <th ><a href="javascript:video1_onclick();">fire in school</a></th>
+                    <script>function video1_onclick() {
+        lati=12.9583182;
+        lon=12.9583182;
+  var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+            center: new google.maps.LatLng(lati, lon),
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        var myLatlng = new google.maps.LatLng(lati, lon);
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: "Bangalore" 
+        });
+        
+    }</script>
+                     </tr>
+                <tr>
+                    <th><iframe width="200" height="150" src="https://www.youtube.com/embed/RPEzfD-fiaY?autoplay=1" frameborder="0" mute="true" allowfullscreen ></iframe></th>
+                </tr>
+                <tr>
+                    <th><a href="#">trafic in johnson</a></th>
+                    </tr>
+                <tr>
+                    <th>
+                    <iframe width="200" height="150" src="https://www.youtube.com/embed/LlSPOnQw86A?autoplay=1" frameborder="0" mute="true" allowfullscreen></iframe>
+                    </th>
+                </tr>
+                <tr>
+                    <th><a href="#">shooting in ull</a></th>
+                </tr>
+                <tr>
+                    <th>
+                    <iframe width="200" height="150" src="https://www.youtube.com/embed/U5QG-I9Ced0?autoplay=1" frameborder="0" mute="true" allowfullscreen></iframe></th>
+                </tr>
+        </table></td>
+        
+                <!-- considering it is on the same folder that .html file -->
+        <td>
+        <div class="col-md-12">
+            <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                        <ul class="nav nav-tabs" data-target=".navbar-collapse">
+                            <li class="active"><a href="#tab1default" data-toggle="tab">Video</a></li>
+                            <li><a href="#tab2default" data-toggle="tab">Map</a></li>
+                            <li><a href="#tab3default" data-toggle="tab">Network</a></li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#tab4default" data-toggle="tab">informatin</a></li>
+                                    
+                                </ul>
+                            </li>
+                        </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade" id="tab4default">
+                             <script>
+                        
+                             /* function initMap() {
+                                var myLatLng = {lat: -25.363, lng: 131.044};
+                        
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                  zoom: 4,
+                                  center: myLatLng
+                                });
+                        
+                                var marker = new google.maps.Marker({
+                                  position: myLatLng,
+                                  map: map,
+                                  title: 'Hello World!'
+                                });
+                              }*/
+                              window.onload = Initialize;
+                            </script>
+                             <script async defer
+                                src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d13792.231301401735!2d-92.0224216!3d30.206897!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1496346683727">
+                                </script>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d13792.231301401735!2d-92.0224216!3d30.206897!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1496346683727" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="tab3default"><img src="./network.png" alt="" border=3 height=500 width=800></img>
+                        </div>
+                        <div class="tab-pane fade in active" id="tab1default">
+                            <video width="640" height="400" controls="controls" src="http://192.168.100.5:1935/test/myStream/manifest.mpd">
+    </video>
+                        </div>
+
+
+
+            <div class="tab-pane fade" id="tab2default">
+                <script>
+                    window.onload = initialize;
+                </script>
+             
+                <table>
+                    <tr>
+                        <td>
+                            <input id="addressinput" type="text" style="width: 447px" />   
+                        </td>
+                        <td>
+                            <input id="Button1" type="button" value="Find" onclick="return Button1_onclick()" /></td>
+                    </tr>
+                    <tr>
+                            <td colspan ="2">
+                                    <div id ="map" style="height: 400px" >
+                                    </div>
+                            </td>
+                    </tr>
+                </table>
+            </div>
+                        
+                        
+        </div>
+                </div>
+            </div>
+        </div>
+    </td>
+    </tr>
+    
+    
+</table>
+    
+  </h2>
+
+  
+</div>
+
