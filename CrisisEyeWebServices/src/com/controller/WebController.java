@@ -66,9 +66,9 @@ public class WebController {
 	@GET
 	@Path("/login")
 	@Produces("text/plain")
-	public String login(@QueryParam("email") String email, @QueryParam("password") String password,@QueryParam("token") String token) {
+	public String login(@QueryParam("email") String email,@QueryParam("deviceID") String deviceID,@QueryParam("password") String password,@QueryParam("token") String token) {
 		System.out.println(">> hi good news a request is there");
-		System.out.println("token is :: "+token+"username is >> " + email + " password >> " + password);
+		System.out.println("token is :: "+token+"username is >> " + email + " password >> " + password +" deviceID is >> " +deviceID);
 
 		DbUtils db = new DbUtils();
 		Connection connect = db.create_Connection();
