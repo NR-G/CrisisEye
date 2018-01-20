@@ -47,16 +47,17 @@ public class WebController {
 	@POST
 	@Path("/hello_post")
 	@Produces("text/plain")
-	public String hello_token_query(@QueryParam("token") String token,@QueryParam("email") String email) {
+	public String hello_token_query(@QueryParam("token") String token,@QueryParam("email") String email,@QueryParam("device_imei")) {
 		System.out.println(">> token "+token);
 		System.out.println(">> email "+email);
+		System.out.println(">> email "+device_imei);
 //		return "Hello World!!!";
-		String output = "Hello World!!! :: " + token+ " :: "+email;
+		String output = "Hello World!!! :: " + token+ " :: "+email + " :: " + device_imei ;
 		
 		DbUtils db = new DbUtils();
 		Connection connect = db.create_Connection();
 
-		 db.update_DeviceDetails(email,token,connect);
+		 db.update_DeviceDetails(email,token,device_imei,connect);
 		
 		
 		 return output;
@@ -101,11 +102,12 @@ public class WebController {
 	@Produces("text/plain")
 	public String sendDeviceData(@QueryParam("battery_level") String battery_level, @QueryParam("lat") String latitude,
 			@QueryParam("lon") String longitude, @QueryParam("device_time") String device_time,
-			@QueryParam("device_id") String device_id, @QueryParam("orientation") String orientation) {
+			@QueryParam("device_id") String device_id, @QueryParam("orientation") String orientation,
+				     @QueryParam("device_imei") String device_imei) {
 		System.out.println(">> hi good news a request is there");
 		System.out.println("battery_level is >> " + battery_level + " latitude >> " + latitude +
 				" longitude >> " + longitude + " device_time >> " + device_time
-				+ " device_id >> " + device_id +  " orientation >> " + orientation);
+				+ " device_id >> " + device_id +  " orientation >> " + orientation + " device_imei >> " + device_imei);
 
 		DbUtils db = new DbUtils();
 		Connection connect = db.create_Connection();
