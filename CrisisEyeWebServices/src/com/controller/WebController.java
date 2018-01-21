@@ -47,10 +47,10 @@ public class WebController {
 	@POST
 	@Path("/hello_post")
 	@Produces("text/plain")
-	public String hello_token_query(@QueryParam("token") String token,@QueryParam("email") String email,@QueryParam("device_imei")) {
+	public String hello_token_query(@QueryParam("token") String token,@QueryParam("email") String email,@QueryParam("device_imei")String device_imei) {
 		System.out.println(">> token "+token);
 		System.out.println(">> email "+email);
-		System.out.println(">> email "+device_imei);
+		System.out.println(">> device_imei "+device_imei);
 //		return "Hello World!!!";
 		String output = "Hello World!!! :: " + token+ " :: "+email + " :: " + device_imei ;
 		
@@ -66,14 +66,15 @@ public class WebController {
 	@GET
 	@Path("/login")
 	@Produces("text/plain")
-	public String login(@QueryParam("email") String email,@QueryParam("deviceID") String deviceID,@QueryParam("password") String password,@QueryParam("token") String token) {
+	public String login(@QueryParam("email") String email,@QueryParam("deviceID") String deviceID,@QueryParam("password") String password,@QueryParam("token") String token,@QueryParam("device_imei")String device_imei) {
 		System.out.println(">> hi good news a request is there");
-		System.out.println("token is :: "+token+"username is >> " + email + " password >> " + password +" deviceID is >> " +deviceID);
+		System.out.println("token is :: "+token+"username is >> " + email + " password >> " + password 
+				+" deviceID is >> " +deviceID+">> device_imei "+device_imei);
 
 		DbUtils db = new DbUtils();
 		Connection connect = db.create_Connection();
 
-		String str =  db.checkLogin(email,password,token,connect);
+		String str =  db.checkLogin(email,password,token,device_imei,connect);
 //http://localhost:8080/CrisisEyeWebServices/webservice/register?firstname=raju&lastname=gottumukala&password=r22&confirm_password=r22&email=raj@gmail.com
 		return str;
 	}
@@ -103,7 +104,7 @@ public class WebController {
 	public String sendDeviceData(@QueryParam("battery_level") String battery_level, @QueryParam("lat") String latitude,
 			@QueryParam("lon") String longitude, @QueryParam("device_time") String device_time,
 			@QueryParam("device_id") String device_id, @QueryParam("orientation") String orientation,
-				     @QueryParam("device_imei") String device_imei) {
+			@QueryParam("device_logged_in_fcm_id") String device_logged_in_fcm_id , @QueryParam("device_imei") String device_imei) {
 		System.out.println(">> hi good news a request is there");
 		System.out.println("battery_level is >> " + battery_level + " latitude >> " + latitude +
 				" longitude >> " + longitude + " device_time >> " + device_time
@@ -113,7 +114,7 @@ public class WebController {
 		Connection connect = db.create_Connection();
 
 //		String str = db.registerUser(firstname, lastname, email,password, confirm_password,connect);
-		String str = db.insertDeviceDetails(latitude, longitude, device_time, orientation, battery_level, device_id, connect);
+		String str = db.insertDeviceDetails(latitude, longitude, device_time, orientation, battery_level, device_logged_in_fcm_id, device_id, connect);
 		return str;
 	}
 	
@@ -131,3 +132,4 @@ public class WebController {
 		// http://localhost:8080/CrisisEyeWebServices/crisiseye/webservice/sendupdatedvalues?framerate=20&keyframe_interval=30&bitrate=750
 	}
 }
+
