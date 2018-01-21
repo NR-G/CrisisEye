@@ -32,20 +32,21 @@ public class DbUtils {
 		
 	}
 
-	public String insertDeviceDetails(String lat,String lon,String device_time,String device_orientation ,String bat_level,String device_id,Connection connect)
+	public String insertDeviceDetails(String lat,String lon,String device_time,String device_orientation ,String bat_level,String device_logged_in_fcm_id , String device_imei,Connection connect)
 	{
 		String flag = "failure";
 		PreparedStatement ps=null;
 		System.out.println("attempting to insert data");
 		
 		try{
-			String stmnt = "Insert into locationinfo " +"(latitude,longitude,device_time,battery_level,device_orientation,device_id)" + "values(?,?,?,?,?,?)";
+			String stmnt = "Insert into locationinfo " +"(latitude,longitude,device_time,battery_level,device_orientation,device_logged_in_fcm_id,device_imei)" + "values(?,?,?,?,?,?,?)";
 			System.out.println("latitude is >> "+lat);
 			System.out.println("longitude is >> "+lon);
 			System.out.println("device_time is >> "+device_time);
 			System.out.println("battery level is >> "+bat_level);
 			System.out.println("device_orientation is >> "+device_orientation);
-			System.out.println("device_id is  >> "+device_id);
+			System.out.println("device_logged_in_fcm_id is >> "+device_logged_in_fcm_id);
+			System.out.println("device_imei is  >> "+device_imei);
 			
 			ps = connect.prepareStatement(stmnt);
 			
@@ -54,7 +55,8 @@ public class DbUtils {
 			ps.setString(3, device_time);
 			ps.setString(4, bat_level);
 			ps.setString(5, device_orientation);
-			ps.setString(6, device_id);
+			ps.setString(6, device_logged_in_fcm_id);
+			ps.setString(7, device_imei);
 			
 			int count = ps.executeUpdate();
 			System.out.println("count is "+ count);
@@ -98,7 +100,7 @@ public class DbUtils {
 		return flag;
 	}
 
-	public void update_DeviceDetails(String email,String device_logged_in_fcm_id, Connection connect) {
+	public void update_DeviceDetails(String email,String device_logged_in_fcm_id,String device_imei, Connection connect) {
 	try {
 	String device_fcm_stmt= "select device_logged_in_fcm_id from CrisisEye.user_info_table  where email = '"+ email+"' ";
 	PreparedStatement device_fcm_id_stmt =connect.prepareStatement(device_fcm_stmt);
@@ -110,10 +112,11 @@ public class DbUtils {
 			String device_fcm_id = rs1.getString("device_logged_in_fcm_id");
 			System.out.println("> device_fcm_id is :: "+device_fcm_id);
 			System.out.println(">> device_logged_in_fcm_id is :: "+device_logged_in_fcm_id);
+			
 			if(! device_fcm_id.equals(device_logged_in_fcm_id))
 			{
 				String update_stmnt =" UPDATE CrisisEye.user_info_table " +
-				"SET device_logged_in_fcm_id = ?" +
+				"SET device_logged_in_fcm_id = ?, device_imei = ?," +
 				"WHERE email = ? ";
 
 				PreparedStatement device_fcm_id_update_stmt =connect.prepareStatement(update_stmnt);
@@ -122,6 +125,7 @@ public class DbUtils {
 					
 				device_fcm_id_update_stmt.setString (1, device_logged_in_fcm_id);
 				device_fcm_id_update_stmt.setString(2, email);
+				device_fcm_id_update_stmt.setString(3, device_imei);
 				device_fcm_id_update_stmt.executeUpdate();
 			}
 				
@@ -134,7 +138,7 @@ public class DbUtils {
 		
 	}
 	
-	public String checkLogin(String email, String password,String device_logged_in_fcm_id, Connection connect) {
+	public String checkLogin(String email, String password,String device_logged_in_fcm_id, String device_imei,Connection connect) {
 		PreparedStatement ps=null;
 		ResultSet rs = null;
 		System.out.println("attempting to insert data");
@@ -173,7 +177,7 @@ public class DbUtils {
 						if(! device_fcm_id.equals(device_logged_in_fcm_id))
 						{
 							String update_stmnt =" UPDATE CrisisEye.user_info_table " +
-							"SET device_logged_in_fcm_id = ?" +
+							"SET device_logged_in_fcm_id = ?, device_imei = ? " +
 							"WHERE email = ? "; 
 //							update users set num_points = ? where first_name = ?
 							
@@ -182,7 +186,8 @@ public class DbUtils {
 									
 								
 							device_fcm_id_update_stmt.setString (1, device_logged_in_fcm_id);
-							device_fcm_id_update_stmt.setString(2, email);
+							device_fcm_id_update_stmt.setString(2, device_imei);
+							device_fcm_id_update_stmt.setString(3,  email);
 							device_fcm_id_update_stmt.executeUpdate();
 						}
 							
