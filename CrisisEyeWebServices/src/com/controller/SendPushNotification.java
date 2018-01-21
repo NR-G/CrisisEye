@@ -23,11 +23,10 @@ public class SendPushNotification {
 	
 	 
 //	 private static final String deviceRegistrationId =  "dPvJDIld3ns:APA91bFs9lrYSSR61uP2DtszTVo-navjsz3YlzpH5K6AgpuhKwpcmyiQaXB_CJGSTOSREA4POIseiLmo2A-9Jgjxw_uaBEqvghMr82CJCSDbt_1LyQ3tkXQh7tbkc1WKyVIK1rjhKuTq";
-//	 d2q7UH_sldg:APA91bHuijFb5624uVwxhdbgaHEvyg0kv_Fyvuue125BjfRDPnQB8LxloqVnnGv-GwsRY8GHZvNxAEQgd17sxq-Cr1YiyhFaVytylcBLxAUgZXvLa9M54pQxu3q7W5KJXiJgCWJfIz9W
-
+//	 f9vDBNFs22I:APA91bG5GWf_A46s7FIqh0yzbP7CWjPFCIdkEOLlOBBP7TpNpCxMXvw6V7NvLKch50mZ9-nIHPtd6o6TSIdVzxxzJ1TF3oKree7j0vhCipQNAz5KOC9Fwdm7w6hhXC_k23psM_Y7gad7
 	 
-	 private static final String deviceRegistrationId =  "dDVU230QYEE:APA91bGRwpI9rpHpJw5Tm7WAKSLt_lZ57_n-4Jb1ItDVqJbLUoPOZkS-AuhXJBiV6z1LmQReZzZ1sOhxWdwE0K6NPvRNY3ERAnevYCFRaCjf4JixrbrM_2y-WmnFQ_70AR1MvK_Seu7v" ;
-	 
+//	 private static final String deviceRegistrationId =  "f9vDBNFs22I:APA91bG5GWf_A46s7FIqh0yzbP7CWjPFCIdkEOLlOBBP7TpNpCxMXvw6V7NvLKch50mZ9-nIHPtd6o6TSIdVzxxzJ1TF3oKree7j0vhCipQNAz5KOC9Fwdm7w6hhXC_k23psM_Y7gad7";
+	 private static final String deviceRegistrationId =  "fVDSHHakh-k:APA91bG2UHz_VMu5xhaxInXS5kJpWpJoxp1vF6NLhgse_09UjVgcvaS9wEVtHKWJhg1cStthzfpc3EcWZXDJiGMISUCZ1W5dbtjbLSz1iI4YPx4KPtkm0XecVspMttWoRH-8Kzdti48k";
 	 public void send_msg(String framerate, String k_frame_interval,  String bitrate)
 	    {
 	        int responseCode = -1;
